@@ -1,6 +1,5 @@
 import Topbar from "./components/topbar/Topbar";
 import Homepage from "./pages/homepage/Homepage";
-import ResumePage from "./pages/resumepage/Resumepage"
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Settings from "./pages/settings/Settings";
@@ -14,9 +13,6 @@ function App() {
     <Router>
       <Topbar />
       <Switch>
-        <Route exact path="/">
-          <ResumePage />
-        </Route>
         <Route path="/register">
           {currentUser ? <Homepage /> : <Register />}
         </Route>
@@ -25,10 +21,8 @@ function App() {
         <Route path="/blogs/:id">
           <Single />
         </Route>
-        <Route path="/settings">
-          {currentUser ? <Settings /> : <Login />}
-        </Route>
-        <Route exact path="/blogs">
+        <Route path="/settings">{currentUser ? <Settings /> : <Login />}</Route>
+        <Route exact path="/">
           <Homepage />
         </Route>
       </Switch>
